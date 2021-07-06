@@ -37,7 +37,13 @@
                                                 <td>{{ $data->name }}</td>
                                                 <td>{{ $data->description }}</td>
                                                 <td>
-                                                    <button class="btn btn-success">Start</button>
+                                                    @if ($data->status == 'new')
+                                                        <div id="stopwatch{{ $data->id }}">00:00:00</div>
+                                                        <button id="start{{ $data->id }}" onclick="timeStart({{$data->id}})">Start</button>
+                                                        <button id="pause{{ $data->id }}" onclick="timePaused({{$data->id}})" disabled>Complete</button>
+                                                    @else
+                                                        COMPLETED
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -50,4 +56,6 @@
             </div>
         </div>
     </div>
+
+    @include('user.timer')
 @endsection

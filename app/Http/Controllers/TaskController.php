@@ -69,4 +69,24 @@ class TaskController extends Controller
         $task->update($data);
         return redirect()->back()->with('status', 'Task assigned');
     }
+
+    public function start($id)
+    {
+        $start = date('Y-m-d H:i:s');
+        $task = Task::findOrFail($id);
+        $task->update(['start' => $start]);
+    }
+
+    public function stop($id, $total)
+    {
+        $task = Task::findOrFail($id);
+        $total = $total;
+        $stop = date('Y-m-d H:i:s');
+
+        $task->update([
+            'stop' => $stop,
+            'hours' => $total,
+            'status' => 'completed',
+        ]);
+    }
 }

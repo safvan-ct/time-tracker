@@ -75,6 +75,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $loop->iteration }} - {{ $task->name }}</h5>
                                         <p class="card-text">{{ $task->description }}</p>
+                                        <p class="card-text">Total time : {{ $task->hours }}</p>
                                     </div>
                                 </div>
                             </div>

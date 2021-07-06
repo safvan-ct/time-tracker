@@ -26,6 +26,7 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Description</th>
+                                            <th>Status</th>
                                             <th>Assign Task</th>
                                             <th>Action</th>
                                         </tr>
@@ -36,9 +37,10 @@
                                                 <th>{{ $loop->iteration }}</th>
                                                 <td>{{ $data->name }}</td>
                                                 <td>{{ $data->description }}</td>
+                                                <td class="text-capitalize">{{ $data->status }}</td>
                                                 <td>
                                                     @if ($data->user)
-                                                        {{ $data->user->name }}
+                                                        <span class="text-capitalize">{{ $data->user->name }}</span>
                                                     @else
                                                         <form action="{{ route('task.assign', $data->id) }}" method="post">
                                                             @csrf

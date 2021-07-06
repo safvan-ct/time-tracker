@@ -12,6 +12,8 @@ Route::post('/profile', [App\Http\Controllers\HomeController::class, 'profileUpd
 
 Route::group(['middleware' => ['auth', 'user']], function(){
     Route::get('/dashboard/user', [App\Http\Controllers\HomeController::class, 'user'])->name('user.home');
+    Route::get('/task-start/{id}', [App\Http\Controllers\TaskController::class, 'start'])->name('task.start');
+    Route::get('/task-stop/{id}/{total}', [App\Http\Controllers\TaskController::class, 'stop'])->name('task.stop');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function(){
